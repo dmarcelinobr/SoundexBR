@@ -1,9 +1,9 @@
 \encoding{UTF-8}
 \name{soundexBR}
 \alias{soundexBR}
-\title{Soundex (Phonetic) Algorithm For Brazilian Portuguese
+\title{ Phonetic Algorithm Coding For Brazilian Portuguese
 }
-\description{SoundexBR returns a census-like soundex code of a string name given the Portuguese sound system. This function was firstly outlined to work with \code{RecordLinkage} package, however, it is also helpful as a standalone function as similar sounding strings should get similar or equal codes. See details bellow.
+\description{SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on indentyfing similar names based on a distribution of characteres distance. See details bellow.
 }
 \usage{
 soundexBR(term, useBytes = FALSE)
@@ -52,6 +52,9 @@ soundexBR(names)
 
 #It might be a good idea to look up for possible enconding inconsistencies:
 ascii.table(names)
+
+# Accented letters may be also replaced.
+accent(names)
 
 # Example with RecordLinkage:
 #Some data:
