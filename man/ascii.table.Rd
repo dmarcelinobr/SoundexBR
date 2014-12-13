@@ -1,24 +1,23 @@
 \encoding{UTF-8}
-\name{data.clean}
-\alias{data.clean}
+\name{ascii.table}
+\alias{ascii.table}
 
-\title{Clean marks
+
+\title{ASCII Characters Table
 }
-\description{Strips marks from data  
+\description{ To detect ASCII characters, we may need to specify them literally. This function helps indentifying what character is in ascii format and what is not.
 }
 \usage{
-data.clean(data)
+ascii.table(x)
 }
 \arguments{
-  \item{data}{A data object
+  \item{x}{A string whose characteres is to be checked against.
   }
-}
-\value{A data object as the input
 }
 \author{
 Daniel Marcelino
 }
 \examples{
-\dontrun{data.clean("dirt_*.*_text+/\+-")}
+ascii.table( c("ã", "@", "_"))
 }
-\keyword{ data manipulation }
+\keyword{ ASCII }
