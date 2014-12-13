@@ -1,5 +1,4 @@
-\name{soundexBR-package}
-\alias{soundexBR-package}
+\name{SoundexBR-package}
 \alias{soundexBR}
 \docType{package}
 \title{ Soundex (Phonetic) Algorithm For Brazilian Portuguese.
@@ -9,7 +8,7 @@ SoundexBR returns a census-like soundex code of a string name given the Portugue
 }
 \details{
 \tabular{ll}{
-Package: \tab soundexBR\cr
+Package: \tab SoundexBR\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
 Date: \tab 2014-12-12\cr
@@ -59,4 +58,22 @@ age=c(67,88,78,60,67,80),
 birth=c(1945,1924,1934,1952,1945,1932),
 date=c(20121208,20121103,20120302,20120105,20120907,20121209)
 ))
+
+# Must call RecordLinkage package
+
+\dontrun{pairs<-compare.linkage(data1, data2,
+blockfld=list(c(1,2,4),c(1,2)),
+phonetic<-c(1,2), phonfun = soundexBR, strcmp = FALSE,
+strcmpfun<-jarowinkler, exclude=FALSE,identity1 = NA,
+identity2=NA, n_match <- NA, n_non_match = NA)
+      
+print(pairs)
+
+editMatch(pairs)
+
+# To access information in the object:  
+weights <- epiWeights(pairs, e = 0.01, f = pairs$frequencies)
+hist(weights$Wdata, plot = FALSE) # Plot TRUE
+getPairs(pairs, max.weight = Inf, min.weight = -Inf)
+
 }

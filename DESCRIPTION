@@ -1,4 +1,4 @@
-Package: soundexBR
+Package: SoundexBR
 Type: Package
 Title: Soundex (Phonetic) Algorithm For Brazilian Portuguese.
 Version: 1.0
