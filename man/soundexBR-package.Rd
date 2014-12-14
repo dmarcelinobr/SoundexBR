@@ -1,6 +1,6 @@
 \encoding{UTF-8}
 \name{SoundexBR-package}
-\alias{soundexBR}
+\alias{SoundexBR}
 \docType{package}
 \title{ Phonetic Coding Algorithm For Brazilian Portuguese. 
 }
