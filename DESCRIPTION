@@ -8,7 +8,7 @@ Maintainer: Daniel Marcelino <dmarcelino@live.com>
 Description: SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance. See details bellow.
 Suggests: SciencesPo
 LazyData: yes
-License: LGPL (>= 2.0, < 3)
+License: AGPL-3
 Depends: R (>= 3.0),stats,utils,graphics,grDevices
 Imports:RecordLinkage
 BugReports: http://github.com/danielmarcelino/soundexBR

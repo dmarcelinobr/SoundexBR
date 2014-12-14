@@ -6,9 +6,9 @@ SoundexBR
 SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance. 
 
 Build status:
- + [![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)
+ + Master branch: [![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)
   
-##### A silly example:
+#### A silly example:
 ```
 names <- c('Ana Karolina Kuhnen', 'Ana Carolina Kuhnen', 'Ana Karolina',
 'João Souza', 'João Souza', 'Dilma Vana Rousseff', 'Dilma Rousef','Aécio Neves', 'Aecio Neves')
@@ -16,8 +16,8 @@ names <- c('Ana Karolina Kuhnen', 'Ana Carolina Kuhnen', 'Ana Karolina',
 soundexBR(names)
 [1] "A-526" "A-526" "A-526" "J-220" "J-220" "D-451" "D-456" "A-251" "A-251"
 ```
-##### Example with RecordLinkage:
-##### Some data:
+#### Example with RecordLinkage:
+#### Some data:
 data1 <- data.frame(list(
 fname=c('Ricardo','Maria','Tereza','Pedro','José','Germano'),
 lname=c('Cunha','Andrade','Silva','Soares','Silva','Lima'),
@@ -34,7 +34,7 @@ date=c(20121208,20121103,20120302,20120105,20120907,20121209)
 ))
 
 
-##### Must call RecordLinkage package
+#### Must call RecordLinkage package
 
 ```
 > pairs<-compare.linkage(data1, data2,
@@ -79,12 +79,12 @@ attr(,"class")
 [1] "RecLinkData"
 
 ```
-###### To edit correspondences 
+#### To edit correspondences 
 ```
 
 > editMatch(pairs)
 ```
-###### To access information in the object:  
+#### To access information in the object:  
 ```
 > weights <- epiWeights(pairs, e = 0.01, f = pairs$frequencies)
 > hist(weights$Wdata, plot = FALSE) # Plot TRUE
