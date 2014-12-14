@@ -1,5 +1,6 @@
 soundexBR <- function(term, useBytes = FALSE) {
   x <- as.character(term)
+  x <- accent(x)
   stopifnot(is.logical(useBytes))
   if (!useBytes){ x <- char2int(x)
     r <- .Call("R_soundexBR", x)

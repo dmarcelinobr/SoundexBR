@@ -1,13 +1,15 @@
 Package: SoundexBR
 Type: Package
-Title: Soundex (Phonetic) Algorithm For Brazilian Portuguese.
+Title: Phonetic Algorithm Coding For Brazilian Portuguese. 
 Version: 1.0
 Date/Publication: 2013-08-27
 Author: Daniel Marcelino
 Maintainer: Daniel Marcelino <dmarcelino@live.com>
-Description: SoundexBR returns a census-like soundex code of a string name given the Portuguese sound system. This function was firstly outlined to work with \code{RecordLinkage} package, however, it is also helpful as a standalone function as similar sounding strings should get similar or equal codes. See details bellow.
+Description: SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance. See details bellow.
 Suggests: SciencesPo
 LazyData: yes
 License: LGPL (>= 2.0, < 3)
+Depends: R (>= 3.0),stats,utils,graphics,grDevices
+Imports:RecordLinkage
 BugReports: http://github.com/danielmarcelino/soundexBR
 ByteCompile: TRUE

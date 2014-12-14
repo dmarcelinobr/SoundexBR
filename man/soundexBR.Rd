@@ -1,9 +1,9 @@
 \encoding{UTF-8}
 \name{soundexBR}
 \alias{soundexBR}
-\title{Soundex (Phonetic) Algorithm For Brazilian Portuguese
+\title{ Phonetic Algorithm Coding For Brazilian Portuguese
 }
-\description{SoundexBR returns a census-like soundex code of a string name given the Portuguese sound system. This function was firstly outlined to work with \code{RecordLinkage} package, however, it is also helpful as a standalone function as similar sounding strings should get similar or equal codes. See details bellow.
+\description{SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance. See details bellow.
 }
 \usage{
 soundexBR(term, useBytes = FALSE)
@@ -11,7 +11,7 @@ soundexBR(term, useBytes = FALSE)
 \arguments{
   \item{term}{a list, a vector or a data frame with strings.
 }
-  \item{useBytes}{ if  \code{useBytes=TRUE} performs byte-wise comparison. The default is \code{FALSE}, which takes longer, but it may avoids different results depending on character encoding.
+  \item{useBytes}{ if \code{useBytes=TRUE} performs byte-wise comparison. The default is \code{FALSE}, which takes longer, but it may avoids different results depending on character encoding.
 }
 }
 \details{This function assign a \sQuote{soundex} code for strings based on their sounds, instead of their spelling. For instance, names that sound alike, but spelled differently, like \dQuote{SOUZA} and \dQuote{SOUSA}, is assigned an identically code string. Therefore, this function may help on with finding names even when they were registered with minor misspellings. This coding algorithm 
@@ -43,15 +43,12 @@ The genealogist Dick Eastman maintains a soundex calculator in his website at \u
 
 \examples{
 
-# A silly example:
+#### A silly example:
 names <- c('Ana Karolina Kuhnen',
 'Ana Carolina Kuhnen', 'Ana Karolina',
-'Dilma Vana Rousseff', 'Dilma Rousef','Aécio Neves' NA)
+'Dilma Vana Rousseff', 'Dilma Rousef','Aécio Neves')
   
 soundexBR(names)
-
-#It might be a good idea to look up for possible enconding inconsistencies:
-ascii.table(names)
 
 # Example with RecordLinkage:
 #Some data:
@@ -69,7 +66,6 @@ age=c(67,88,78,60,67,80),
 birth=c(1945,1924,1934,1952,1945,1932),
 date=c(20121208,20121103,20120302,20120105,20120907,20121209)
 ))
-
 
 # Must call RecordLinkage package
 
@@ -90,4 +86,4 @@ getPairs(pairs, max.weight = Inf, min.weight = -Inf)
 	}
 }
 
-\keyword{soundex}
+\keyword{Soundex}

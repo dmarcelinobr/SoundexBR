@@ -20,12 +20,9 @@ accent(x)
 \author{Daniel Marcelino <dmarcelino@live.com>
 }
 
-\seealso{\code{\link{outtags}}
-}
-
 \examples{
 
-accent('Não me julgues pela metade se não me conheces por inteiro')
+accent('Thérèse, não me julgues pela metade se não me conheces por inteiro')
 
 \dontrun{accent(x)}
 }

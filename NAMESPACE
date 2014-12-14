@@ -1,1 +1,15 @@
-exportPattern("^[[:alpha:]]+")
+useDynLib(SoundexBR)
+import(parallel)
+importFrom("RecordLinkage", "editMatch") 
+importFrom("RecordLinkage", "compare.linkage") 
+importFrom("RecordLinkage", "epiWeights") 
+importFrom("RecordLinkage", "getPairs") 
+
+export(
+    accent,
+    soundexBR,
+	ascii.table,
+	char2int,
+	int2char
+)
+
