@@ -1,7 +1,7 @@
 SoundexBR
 =========
 
-### Phonetic Algorithm Coding For Brazilian Portuguese. 
+### Phonetic Coding Algorithm For Brazilian Portuguese. 
 
 SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance. 
 
@@ -11,7 +11,7 @@ names <- c('Ana Karolina Kuhnen', 'Ana Carolina Kuhnen', 'Ana Karolina',
 'João Souza', 'João Souza', 'Dilma Vana Rousseff', 'Dilma Rousef','Aécio Neves', 'Aecio Neves')
 
 soundexBR(names)
-[1] "A526" "A526" "A526" "J220" "J220" "D451" "D456" "A251" "A251"
+[1] "A-526" "A-526" "A-526" "J-220" "J-220" "D-451" "D-456" "A-251" "A-251"
 ```
 ##### Example with RecordLinkage:
 ##### Some data:

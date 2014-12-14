@@ -1,8 +1,8 @@
 \encoding{UTF-8}
 \name{SoundexBR-package}
-\alias{SoundexBR}
+\alias{soundexBR}
 \docType{package}
-\title{  Phonetic Algorithm Coding For Brazilian Portuguese. 
+\title{ Phonetic Coding Algorithm For Brazilian Portuguese. 
 }
 \description{
 SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance.  See details bellow.
