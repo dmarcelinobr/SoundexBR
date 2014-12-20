@@ -1,9 +1,10 @@
 SoundexBR
 =========
 
-### Phonetic-Coding For Brazilian Portuguese
+### Phonetic-Coding For Portuguese
 
-SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance. 
+The SoundexBR package provides an algorithm for decoding names into phonetic codes, as pronounced in Portuguese. The goal is for homophones to be encoded to the same representation so that they can be matched despite minor differences in spelling. The algorithm mainly encodes consonants; a vowel will not be encoded unless it is the first letter. The soundex code resultant consists of a four digits long string composed by one letter followed by three numerical digits: the letter is the first letter of the name, and the digits encode the remaining consonants.
+This R function may be useful for identifying "close" matches which typically fail due to variant spellings of names. For instance, both "Clair" and "Claire" return the same string "C460", but the slightly different spellings of these names is enough to cause a deterministic linkage to fail when comparing the actual names.
 
 Build status:
  + Master branch: [![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)
@@ -122,19 +123,20 @@ attr(,"class")
 
 
 
-The Algorithm as an Outline
+#### The Algorithm as an Outline
 
 Capitalize all letters in the word and drop all punctuation marks. Pad the word with rightmost blanks as needed during each procedure step.
 Retain the first letter of the word.
 Change all occurrence of the following letters to '0' (zero):
-  'A', E', 'I', 'O', 'U', 'H', 'W', 'Y'.
+```A, E, I, O, U, H, W, Y.```
 Change letters from the following sets into the digit given:
-1 = 'B', 'F', 'P', 'V'
-2 = 'C', 'G', 'J', 'K', 'Q', 'S', 'X', 'Z'
-3 = 'D','T'
-4 = 'L'
-5 = 'M','N'
-6 = 'R'
+```1 = B, F, P, V
+2 = C, G, J, K, Q, S, X, Z
+3 = D,T
+4 = L
+5 = M,N
+6 = R
+```
 Remove all pairs of digits which occur beside each other from the string that resulted after step (4).
 Remove all zeros from the string that results from step 5.0 (placed there in step 3)
-Pad the string that resulted from step (6) with trailing zeros and return only the first four positions, which will be of the form <uppercase letter> <digit> <digit> <digit>.
+Pad the string that resulted from step (6) with trailing zeros and return only the first four positions, which will be of the form <Letter> <digit> <digit> <digit>.

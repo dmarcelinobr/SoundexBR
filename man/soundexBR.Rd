@@ -3,7 +3,7 @@
 \alias{soundexBR}
 \title{ Phonetic-Coding For Portuguese
 }
-\description{The soundexBR function provides an algorithm for decoding names into phonetic codes, as pronounced in Portuguese. Soundex coding can be useful to identify \sQuote{close} matches which fail due to variant spellings of names. That is, homophones can be matched despite minor differences in spelling. For instance, both \dQuote{Clair} and \dQuote{Claire} return the same string \dQuote{C460}, but the slightly different spellings of these names is enough to cause a deterministic linkage to fail when comparing the actual names. Soundex does not help when the variants do not sound alike, or start with different letters.
+\description{The soundexBR function provides an algorithm for decoding names into phonetic codes, as pronounced in Portuguese. Soundex coding can be useful to identify \sQuote{close} matches which typically fail due to variant spellings of names. For instance, both \dQuote{Clair} and \dQuote{Claire} return the same string \dQuote{C460}, but the slightly different spellings of these names is enough to cause a deterministic linkage to fail when comparing the actual names. Soundex does not help when the variants do not sound alike, or start with different letters.
 }
 \usage{
 soundexBR(term, useBytes = FALSE)
