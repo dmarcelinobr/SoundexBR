@@ -20,4 +20,4 @@ Daniel Marcelino
 \examples{
 ascii.table( c("ã", "@", "_"))
 }
-\keyword{ ASCII }
+\keyword{ Encoding }
