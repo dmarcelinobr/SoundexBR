@@ -1,65 +1,76 @@
 \encoding{UTF-8}
 \name{soundexBR}
 \alias{soundexBR}
-\title{ Phonetic Coding Algorithm For Brazilian Portuguese.
+\title{ Phonetic-Coding For Portuguese
 }
-\description{SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance. See details bellow.
+\description{The soundexBR function provides an algorithm for decoding names into phonetic codes, as pronounced in Portuguese. Soundex coding can be useful to identify \sQuote{close} matches which fail due to variant spellings of names. That is, homophones can be matched despite minor differences in spelling. For instance, both \dQuote{Clair} and \dQuote{Claire} return the same string \dQuote{C460}, but the slightly different spellings of these names is enough to cause a deterministic linkage to fail when comparing the actual names. Soundex does not help when the variants do not sound alike, or start with different letters.
 }
 \usage{
 soundexBR(term, useBytes = FALSE)
 }
 \arguments{
-  \item{term}{a list, a vector or a data frame with strings.
+  \item{term}{a list, a vector or a data frame with character strings.
 }
-  \item{useBytes}{ if \code{useBytes=TRUE} performs byte-wise comparison. The default is \code{FALSE}, which takes longer, but it may avoids different results depending on character encoding.
+  \item{useBytes}{ if \code{useBytes=TRUE} performs byte-wise comparison. The default is set to \code{FALSE}, which takes longer, but it may prevent different results depending on character encoding.
 }
 }
-\details{This function assign a \sQuote{soundex} code for strings based on their sounds, instead of their spelling. For instance, names that sound alike, but spelled differently, like \dQuote{SOUZA} and \dQuote{SOUSA}, is assigned an identically code string. Therefore, this function may help on with finding names even when they were registered with minor misspellings. This coding algorithm 
-is only meaningful for characters in the ranges a-z and A-Z. The coding of strings 
-containing non-printable ascii or other unknown characters that are system-dependent should
-not be trusted; therefore a warning message may be printed. Finally, the code consists of 4 digits: a letter and three numbers as \dQuote{0-000} <capital letter><digit><digit><digit>, the integers refers to the remaining letters.
+\details{ The soundexBR may help with identification of names even when they are spelled differently. However, the algorithm does not help when the variants do not sound alike, or start with different letters. For instance, while \dQuote{Carolina} and \dQuote{Karolina} both receive a similar code, respectively \dQuote{C645} and \dQuote{K645}, the first letter differ. 
+Further, this function is only meaningful for characters in the ranges a-z and A-Z. Although, I tried to minimize character encoding issues, there are several non-printable ascii characters and system-dependent characters that may cause the function to print a warning message. 
+
+The numerical digits of the code are based on specific consonant sounds and can be computed by using the letters's \sQuote{power}. For instance, (1) retain the first letter of the name and drop other occurrences of \verb{A, E, I, O, U, Y, H, W}. (2) replace consonants with digits as follows (after the first letter):
+\preformatted{
+B, F, P, V = 1
+C, G, J, K, Q, S, X, Z = 2
+D, T = 3
+L = 4
+M, N = 5
+R = 6}
+
+(3) If two or more letters with the same number are adjacent in the original name (before step 1), only retain the first letter; also two letters with the same number separated by ‘h’ or ‘w’ are coded as a single number, whereas such letters separated by a vowel are coded twice, for instance, \dQuote{Ashcraft} and \dQuote{Ashcroft} both yield \dQuote{A261} (the chars \sQuote{s} and \sQuote{c} in the name receive a single number of 2 and not 22 since an \sQuote{h} lies in between them).
+(4) Iterate the previous step until you have one letter and three numbers. If you have too few letters in your word that you cannot assign three numbers, append with zeros until there are three numbers as in \dQuote{A500}. If the resultant code has more than 3 numbers, just retain the first 3 numbers.
+
+\emph{Probabilistic Matching}: soundexBR may be used as a phonetic identifier to find results that do not match exactly the terms. Searching for names can be difficult as there are often multiple alternative spellings for names. An example is the name Claire. It has two alternatives, Clare and Clair, which are both pronounced the same. Searching for one spelling would not show results for the two others. Fortunately, soundexBR will produce the same code for all three variations, \dQuote{C460}. Therefore, searching names based on the soundex code all three variations will be matched. In the examples below, you can instances of using soundexBR together with the \pkg{RecordLinkage} package, by supplying it with a phonetic dictionary for Portuguese records.
 }
-\value{A character vector or matrix with the same dimensions as \code{term}.
+
+\value{A character vector with same dimensions as \code{term}.
 }
 \references{
 Borg, Andreas and Murat Sariyar. (2012) \emph{RecordLinkage: Record Linkage in R,} R package version 0.4-1,  \url{http://CRAN.R-project.org/package=RecordLinkage}.
 
 Camargo Jr. and Coeli CM. (2000) Reclink: aplicativo para o relacionamento de bases de dados, implementando o método probabilistic record linkage. \emph{Cad. Saúde Pública}, \bold{16(2)}, Rio de Janeiro.
 
+Eastman, Dick \emph{Soundex Calculator}, \url{http://eogn.com/soundex/}.
+
 Marcelino, Daniel (2013) \emph{SciencesPo: A Tool Set for Analyzing Political Behaviour Data}, \url{(http://dx.doi.org/10.2139/ssrn.2320547}.
 
 Paula, Fátima de Lima (2014) \emph{Readmissão Hospitalar de Idosos após Internação por Fratura Proximal do Fêmur no Município do Rio de Janeiro}, Doctoral thesis, Fiocruz.
-
 }
 
-\author{Daniel Marcelino <dmarcelino@live.com>
+\author{Daniel Marcelino \email{dmarcelino@live.com}
 }
 \note{This function was adapted from the US census soundex version. 
 See in \url{http://archives.gov/research/census/soundex.html}
-
-The genealogist Dick Eastman maintains a soundex calculator in his website at \url{http://eogn.com/soundex/}.
-
 }
 
 \examples{
 
 #### A silly example:
-names <- c('Ana Karolina Kuhnen', 'Ana Carolina Kuhnen', 'Ana Karolina',
-'João Souza', 'João Souza', 'Dilma Vana Rousseff', 'Dilma Rousef','Aécio Neves', 'Aecio Neves')
+names <- c('Ana Karolina Kuhnen', 'Ana Carolina Kuhnen', 'Ana Karolina','João Souza', 
+'João Souza', 'Dilma Vana Rousseff', 'Dilma Rousef','Aécio Neves', 'Aecio Neves')
 
 soundexBR(names)
 
 # Example with RecordLinkage:
 #Some data:
 data1 <- data.frame(list(
-fname=c('Ricardo','Maria','Tereza','Pedro','José','Germano'),
+fname=c('Ricardo','Maria','Tereza','Pedro','José','Rubens'),
 lname=c('Cunha','Andrade','Silva','Soares','Silva','Lima'),
 age=c(67,89,78,65,68,67),
 birth=c(1945,1923,1934,1947,1944,1945),
 date=c(20120907,20120703,20120301,20120805,20121004,20121209)
 ))
 
-data2<-data.frame( list( fname=c('Maria','Lúcia','Paulo','Marcos','Ricardo','Germânio'),
+data2<-data.frame( list( fname=c('Maria','Lúcia','Paulo','Marcos','Ricardo','Rubem'),
 lname=c('Andrada','Silva','Soares','Pereira','Cunha','Lima'),
 age=c(67,88,78,60,67,80),
 birth=c(1945,1924,1934,1952,1945,1932),

@@ -5,7 +5,8 @@ RECYCLEWARNING <- NULL
 }
 
 .onAttach <- function(libname, pkgname) {
-  	pkgEnv = pos.to.env(match('package:SoundexBR', search()))	
+  	pkgEnv = pos.to.env(match('package:SoundexBR', search()))
+  	packageStartupMessage('')	
 }
 
 ascii.table <- function(x){

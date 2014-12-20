@@ -22,4 +22,4 @@ char2int(x)
 	char2int("This should be whole numbers")
 	}
 
-\keyword{ Soundex }
+\keyword{ Encoding }

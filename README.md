@@ -1,7 +1,7 @@
 SoundexBR
 =========
 
-### Phonetic Coding Algorithm For Brazilian Portuguese. 
+### Phonetic-Coding For Brazilian Portuguese
 
 SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance. 
 
@@ -19,15 +19,15 @@ soundexBR(names)
 #### Example with RecordLinkage:
 #### Some data:
 data1 <- data.frame(list(
-fname=c('Ricardo','Maria','Tereza','Pedro','José','Germano'),
-lname=c('Cunha','Andrade','Silva','Soares','Silva','Lima'),
+first_name=c('Ricardo','Maria','Tereza','Pedro','José','Germano'),
+last_name=c('Cunha','Andrade','Silva','Soares','Silva','Lima'),
 age=c(67,89,78,65,68,67),
 birth=c(1945,1923,1934,1947,1944,1945),
 date=c(20120907,20120703,20120301,20120805,20121004,20121209)
 ))
 
-data2<-data.frame( list( fname=c('Maria','Lúcia','Paulo','Marcos','Ricardo','Germânio'),
-lname=c('Andrada','Silva','Soares','Pereira','Cunha','Lima'),
+data2<-data.frame( list( first_name=c('Maria','Lúcia','Paulo','Marcos','Ricardo','Germânio'),
+last_name=c('Andrada','Silva','Soares','Pereira','Cunha','Lima'),
 age=c(67,88,78,60,67,80),
 birth=c(1945,1924,1934,1952,1945,1932),
 date=c(20121208,20121103,20120302,20120105,20120907,20121209)
@@ -45,7 +45,7 @@ date=c(20121208,20121103,20120302,20120105,20120907,20121209)
        
 > print(pairs)
 $data1
-    fname   lname age birth     date
+    first_name   last_name age birth     date
 1 Ricardo   Cunha  67  1945 20120907
 2   Maria Andrade  89  1923 20120703
 3  Tereza   Silva  78  1934 20120301
@@ -54,7 +54,7 @@ $data1
 6 Germano    Lima  67  1945 20121209
 
 $data2
-     fname   lname age birth     date
+     first_name   last_name age birth     date
 1    Maria Andrada  67  1945 20121208
 2    Lúcia   Silva  88  1924 20121103
 3    Paulo  Soares  78  1934 20120302
@@ -63,13 +63,13 @@ $data2
 6 Germânio    Lima  80  1932 20121209
 
 $pairs
-  id1 id2 fname lname age birth date is_match
+  id1 id2 first_name last_name age birth date is_match
 1   1   5     1     1   1     1    1       NA
 2   6   6     0     1   0     0    1       NA
 3   2   1     1     0   0     0    0       NA
 
 $frequencies
-    fname     lname       age     birth      date 
+    first_name     last_name       age     birth      date 
 0.1000000 0.1428571 0.1250000 0.1250000 0.1000000 
 
 $type
@@ -109,7 +109,7 @@ $equidist
 attr(,"class")
 [1] "histogram"
 > getPairs(pairs, max.weight = Inf, min.weight = -Inf)
-  id    fname   lname age birth     date Weight
+  id    first_name last_name age birth     date Weight
 1  1  Ricardo   Cunha  67  1945 20120907       
 2  5  Ricardo   Cunha  67  1945 20120907   <NA>
 3                                              
@@ -119,3 +119,22 @@ attr(,"class")
 7  2    Maria Andrade  89  1923 20120703       
 8  1    Maria Andrada  67  1945 20121208   <NA>
 ```
+
+
+
+The Algorithm as an Outline
+
+Capitalize all letters in the word and drop all punctuation marks. Pad the word with rightmost blanks as needed during each procedure step.
+Retain the first letter of the word.
+Change all occurrence of the following letters to '0' (zero):
+  'A', E', 'I', 'O', 'U', 'H', 'W', 'Y'.
+Change letters from the following sets into the digit given:
+1 = 'B', 'F', 'P', 'V'
+2 = 'C', 'G', 'J', 'K', 'Q', 'S', 'X', 'Z'
+3 = 'D','T'
+4 = 'L'
+5 = 'M','N'
+6 = 'R'
+Remove all pairs of digits which occur beside each other from the string that resulted after step (4).
+Remove all zeros from the string that results from step 5.0 (placed there in step 3)
+Pad the string that resulted from step (6) with trailing zeros and return only the first four positions, which will be of the form <uppercase letter> <digit> <digit> <digit>.

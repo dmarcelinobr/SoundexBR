@@ -2,10 +2,10 @@
 \name{SoundexBR-package}
 \alias{SoundexBR}
 \docType{package}
-\title{ Phonetic Coding Algorithm For Brazilian Portuguese. 
+\title{ Phonetic-Coding For Portuguese
 }
 \description{
-SoundexBR returns a census-like phonetic code of a string name given the Portuguese sound system. This function was outlined to work with the \code{RecordLinkage} package, however, it is also helpful as a standalone function as it can help on identifying similar names based on a distribution of characters distance.  See details bellow.
+This package provides an algorithm for decoding names into phonetic codes, as pronounced in Portuguese. The goal is for homophones to be encoded to the same representation so that they can be matched despite minor differences in spelling. The algorithm mainly encodes consonants; a vowel will not be encoded unless it is the first letter. The soundex code resultant consists of a four digits long string composed by one letter followed by three numerical digits: the letter is the first letter of the name, and the digits encode the remaining consonants. Similar consonants are assigned to the same value, for instance, \samp{D}, \samp{T} are each encoded as the number \samp{3}. Therefore, it can be used for indexing names by their sound proximity compared to alphabetical order.
 }
 \details{
 \tabular{ll}{
@@ -15,13 +15,5 @@ Version: \tab 1.0\cr
 Date: \tab 2014-12-12\cr
 License: \tab AGPL-3\cr}
 }
-\author{
-Daniel Marcelino <dmarcelino@live.com>
+\author{Daniel Marcelino \email{dmarcelino@live.com}
 }
-\references{
-Borg, Andreas and Murat Sariyar. (2012) \emph{RecordLinkage: Record Linkage in R,} R package version 0.4-1,  \url{http://CRAN.R-project.org/package=RecordLinkage}.
-
-Marcelino, Daniel (2013) \emph{SciencesPo: A Tool Set for Analyzing Political Behaviour Data}, \url{(http://dx.doi.org/10.2139/ssrn.2320547}.
-}
-
-\keyword{Soundex}
