@@ -8,14 +8,54 @@ This R function may be useful for identifying "close" matches which typically fa
 
 Build status:
  + Master branch: [![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)
++ 
+The _ SoundexBR_  package lives on the R Foundation repository [(CRAN)](http://cran.r-project.org/web/packages/SoundexBR/index.html) and is also hosted on [Github](http://github.com/danielmarcelino/SoundexBR). To install it, you can use the following methods.
+
+1 - From the CRAN repository:
+
+  ```
+  install.packages('SoundexBR',repos='http://cran.r-project.org')
+  require(SoundexBR)
+  ```
+
+2 -  You can always download the latest development version using the nifty function from devtools package.
+
+
+  ```
+  require(devtools)
+  install_github("danielmarcelino/SoundexBR")
+  ```
   
+3 - Or download the [sources in a zip](https://github.com/danielmarcelino/SoundexBR/zipball/master) file and build manually. To do so, please unzip the file to an empty dir and run the following commands there:
+
+
+```
+R CMD build SoundexBR
+R CMD INSTALL SoundexBR_*.tar.gz
+```
+
+If you're running R on Windows, you need to install [Rtools](http://cran.stat.ucla.edu/bin/windows/Rtools/ ). Once you have installed `Rtools`, issue following command in command prompt:
+
+```
+R CMD build --binary <path to .tar.gz file>
+R CMD INSTALL <path to .zip file>
+```
+## Usage
+
 #### A silly example:
 ```
 names <- c('Ana Karolina Kuhnen', 'Ana Carolina Kuhnen', 'Ana Karolina',
 'João Souza', 'João Souza', 'Dilma Vana Rousseff', 'Dilma Rousef','Aécio Neves', 'Aecio Neves')
-
+	
 soundexBR(names)
-[1] "A-526" "A-526" "A-526" "J-220" "J-220" "D-451" "D-456" "A-251" "A-251"
+[1] "A526" "A526" "A526" "J220" "J220" "D451" "D456" "A251" "A251"
+```
+
+```
+names2 <- ("HILBERT", "Heilbronn", "Gauss", "Kant")
+
+soundexBR(names2)
+
 ```
 #### Example with RecordLinkage:
 #### Some data:
