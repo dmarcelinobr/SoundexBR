@@ -187,8 +187,11 @@ Retain the first letter of the word. However, if the first letter of the word is
 **GI**, change to **JI**.
 
 Change all occurrence of the following letters to '0' (zero):
+
 ```A, E, I, O, U, H, W, Y.```
+
 Change letters from the following sets into the digit given:
+
 ```1 = B, F, P, V```
 
 ```2 = C, G, J, K, Q, S, X, Z```
