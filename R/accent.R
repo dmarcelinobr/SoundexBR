@@ -1,13 +1,13 @@
-#' UTF-8
-#'@title Recode a vector.
+#' @encoding UTF-8
+#'@title Get rid of Accent Marks
 #'
 #' @description Replace lower and upper case accented letters with their counterpart without diacritical marks.
 #' @details This function can replace a variety of common marks, but not all of them. It is designed to be expanded on demand.
 #' @param x is a data object which contains diacritical marks.
 #' @return a vector with same length of \code{x} without diacritic.
 #' @export
-#' @author Daniel Marcelino \email{dmarcelino@live.com}.
-#' @seealso \code{\link{outtags}}, \code{\link{ascii.list}}.
+#' @author Daniel Marcelino \email{dmarcelino@@live.com}.
+#' @seealso \code{\link{ascii.table}}.
 #' @keywords attributes
 #' @examples
 #' x <- 'Thérèse, não me julgues pela metade se não me conheces por inteiro'

@@ -52,9 +52,17 @@ soundexBR(names)
 ```
 
 ```
-names2 <- ("HILBERT", "Heilbronn", "Gauss", "Kant")
+names2 <- c("HILBERT", "Heilbronn", "Gauss", "Kant")
+ 
+ _Original Soundex_: 
+ 
+ soundexBR(names2, BR=FALSE) 
+[1] "H416" "H416" "G200" "K530"
+ 
+ _SoundexBR:_
 
 soundexBR(names2)
+[1] "I416" "E416" "G200" "C530"
 
 ```
 #### Example with RecordLinkage:
@@ -120,12 +128,12 @@ attr(,"class")
 [1] "RecLinkData"
 
 ```
-#### To edit correspondences 
+#### Editing  correspondences 
 ```
 
 > editMatch(pairs)
 ```
-#### To access information in the object:  
+#### Accessing information within the object:  
 ```
 > weights <- epiWeights(pairs, e = 0.01, f = pairs$frequencies)
 > hist(weights$Wdata, plot = FALSE) # Plot TRUE
@@ -163,10 +171,21 @@ attr(,"class")
 
 
 
-#### The Algorithm as an Outline
+#### The Algorithm in a Nutshell
 
 Capitalize all letters in the word and drop all punctuation marks. Pad the word with rightmost blanks as needed during each procedure step.
-Retain the first letter of the word.
+Retain the first letter of the word. However, if the first letter of the word is 
+```H```, retain the second letter. If the first letter of the word is 
+```Y```, change to ```I```. If the combination of the first and the second letters is: 
+```WA```, change to ```WA```. If the combination of the first and the second letters is: 
+```KA```, change to ```CA```. If the combination of the first and the second letters is: 
+```KO```, change to ```CO```. If the combination of the first and the second letters is: 
+```KU```, change to ```CU```. If the combination of the first and the second letters is: 
+```CI```, change to ```SI```. If the combination of the first and the second letters is: 
+```CE```, change to ```SE```. If the combination of the first and the second letters is: 
+```GE```, change to ```JE```. If the combination of the first and the second letters is: 
+```GI```, change to ```JI```.
+
 Change all occurrence of the following letters to '0' (zero):
 ```A, E, I, O, U, H, W, Y.```
 Change letters from the following sets into the digit given:

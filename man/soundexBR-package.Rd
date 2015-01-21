@@ -11,8 +11,8 @@ This package provides an algorithm for decoding names into phonetic codes, as pr
 \tabular{ll}{
 Package: \tab SoundexBR\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2014-12-12\cr
+Version: \tab 1.1\cr
+Date: \tab 2015-01-20\cr
 License: \tab AGPL-3\cr}
 }
 \author{Daniel Marcelino \email{dmarcelino@live.com}

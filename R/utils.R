@@ -9,6 +9,7 @@ RECYCLEWARNING <- NULL
   	packageStartupMessage('')	
 }
 
+#' @export
 ascii.table <- function(x){
   charclass <- paste0("[^]"
                       , "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
