@@ -175,27 +175,32 @@ attr(,"class")
 
 Capitalize all letters in the word and drop all punctuation marks. Pad the word with rightmost blanks as needed during each procedure step.
 Retain the first letter of the word. However, if the first letter of the word is 
-```H```, retain the second letter. If the first letter of the word is 
-```Y```, change to ```I```. If the combination of the first and the second letters is: 
-```WA```, change to ```WA```. If the combination of the first and the second letters is: 
-```KA```, change to ```CA```. If the combination of the first and the second letters is: 
-```KO```, change to ```CO```. If the combination of the first and the second letters is: 
-```KU```, change to ```CU```. If the combination of the first and the second letters is: 
-```CI```, change to ```SI```. If the combination of the first and the second letters is: 
-```CE```, change to ```SE```. If the combination of the first and the second letters is: 
-```GE```, change to ```JE```. If the combination of the first and the second letters is: 
-```GI```, change to ```JI```.
+**H**, retain the second letter. If the first letter of the word is 
+**Y**, change to **I**. If the combination of the first and the second letters is: 
+**WA**, change to **VA**. If the combination of the first and the second letters is: 
+**KA**, change to **CA**. If the combination of the first and the second letters is: 
+**KO**, change to **CO**. If the combination of the first and the second letters is: 
+**KU**, change to **CU**. If the combination of the first and the second letters is: 
+**CI**, change to **SI**. If the combination of the first and the second letters is: 
+**CE**, change to **SE**. If the combination of the first and the second letters is: 
+**GE**, change to **JE**. If the combination of the first and the second letters is: 
+**GI**, change to **JI**.
 
 Change all occurrence of the following letters to '0' (zero):
 ```A, E, I, O, U, H, W, Y.```
 Change letters from the following sets into the digit given:
-```1 = B, F, P, V
-2 = C, G, J, K, Q, S, X, Z
-3 = D,T
-4 = L
-5 = M,N
-6 = R
-```
+```1 = B, F, P, V```
+
+```2 = C, G, J, K, Q, S, X, Z```
+
+```3 = D,T```
+
+```4 = L```
+
+```5 = M,N```
+
+```6 = R ```
+
 Remove all pairs of digits which occur beside each other from the string that resulted after step (4).
 Remove all zeros from the string that results from step 5.0 (placed there in step 3)
 Pad the string that resulted from step (6) with trailing zeros and return only the first four positions, which will be of the form <Letter> <digit> <digit> <digit>.
