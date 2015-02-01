@@ -91,7 +91,9 @@ date=c(20121208,20121103,20120302,20120105,20120907,20121209)
  phonetic<-c(1,2), phonfun = soundexBR, strcmp = FALSE,
  strcmpfun<-jarowinkler, exclude=FALSE,identity1 = NA,
  identity2=NA, n_match <- NA, n_non_match = NA)
-       
+ ```
+
+```       
 > print(pairs)
 $data1
     first_name   last_name age birth     date
@@ -126,7 +128,6 @@ $type
 
 attr(,"class")
 [1] "RecLinkData"
-
 ```
 #### Editing  correspondences 
 ```
