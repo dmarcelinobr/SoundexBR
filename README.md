@@ -1,14 +1,10 @@
-SoundexBR
-=========
+# SoundexBR  [![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)   [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)
 
 ### Phonetic-Coding For Portuguese
 
 The SoundexBR package provides an algorithm for decoding names into phonetic codes, as pronounced in Portuguese. The goal is for homophones to be encoded to the same representation so that they can be matched despite minor differences in spelling. The algorithm mainly encodes consonants; a vowel will not be encoded unless it is the first letter. The soundex code resultant consists of a four digits long string composed by one letter followed by three numerical digits: the letter is the first letter of the name, and the digits encode the remaining consonants.
 This R function may be useful for identifying "close" matches which typically fail due to variant spellings of names. For instance, both "Clair" and "Claire" return the same string "C460", but the slightly different spellings of these names is enough to cause a deterministic linkage to fail when comparing the actual names.
 
-Build status:
- + Master branch: [![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)
-+ 
 The _ SoundexBR_  package lives on the R Foundation repository [(CRAN)](http://cran.r-project.org/web/packages/SoundexBR/index.html) and is also hosted on [Github](http://github.com/danielmarcelino/SoundexBR). To install it, you can use the following methods.
 
 1 - From the CRAN repository:
