@@ -51,12 +51,12 @@ soundexBR(names)
 ```
 names2 <- c("HILBERT", "Heilbronn", "Gauss", "Kant")
  
- _Original Soundex_: 
+ **Original Soundex:** 
  
  soundexBR(names2, BR=FALSE) 
 [1] "H416" "H416" "G200" "K530"
  
- _SoundexBR:_
+ **SoundexBR:**
 
 soundexBR(names2)
 [1] "I416" "E416" "G200" "C530"
@@ -64,6 +64,7 @@ soundexBR(names2)
 ```
 #### Example with RecordLinkage:
 #### Some data:
+``` 
 data1 <- data.frame(list(
 first_name=c('Ricardo','Maria','Tereza','Pedro','José','Germano'),
 last_name=c('Cunha','Andrade','Silva','Soares','Silva','Lima'),
@@ -71,14 +72,16 @@ age=c(67,89,78,65,68,67),
 birth=c(1945,1923,1934,1947,1944,1945),
 date=c(20120907,20120703,20120301,20120805,20121004,20121209)
 ))
+```
 
+```
 data2<-data.frame( list( first_name=c('Maria','Lúcia','Paulo','Marcos','Ricardo','Germânio'),
 last_name=c('Andrada','Silva','Soares','Pereira','Cunha','Lima'),
 age=c(67,88,78,60,67,80),
 birth=c(1945,1924,1934,1952,1945,1932),
 date=c(20121208,20121103,20120302,20120105,20120907,20121209)
 ))
-
+```
 
 #### Must call RecordLinkage package
 
@@ -128,7 +131,6 @@ attr(,"class")
 ```
 #### Editing  correspondences 
 ```
-
 > editMatch(pairs)
 ```
 #### Accessing information within the object:  
