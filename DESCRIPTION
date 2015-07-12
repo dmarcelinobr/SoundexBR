@@ -1,7 +1,7 @@
 Package: SoundexBR
 Type: Package
-Title: Phonetic-Coding For Portuguese
-Version: 1.1
+Title: Phonetic-Coding for Portuguese
+Version: 1.2
 Date/Publication: 2014-12-12
 Author: Daniel Marcelino
 Maintainer: Daniel Marcelino <dmarcelino@live.com>
@@ -17,6 +17,7 @@ Suggests:
     SciencesPo
 LazyData: yes
 License: GPL (>= 2)
+Encoding: latin1
 Depends:
     R (>= 3.0),stats,utils,graphics,grDevices
 Enhances: RecordLinkage
