@@ -14,7 +14,7 @@ Description: The SoundexBR package provides an algorithm for decoding names
     one letter followed by three numerical digits: the letter is the first
     letter of the name, and the digits encode the remaining consonants.
 Suggests:
-    SciencesPo
+    SciencesPo, stringr
 LazyData: yes
 License: GPL (>= 2)
 Encoding: latin1
