@@ -1,4 +1,6 @@
-# SoundexBR  [![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)   [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) ![](http://cranlogs.r-pkg.org/badges/grand-total/SoundexBR) 
+# SoundexBR  
+[![CRAN Version](http://www.r-pkg.org/badges/version/SoundexBR)](http://cran.r-project.org/package=SoundexBR)
+[![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)   [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) ![](http://cranlogs.r-pkg.org/badges/grand-total/SoundexBR) 
 
 
 ### Phonetic-Coding For Portuguese

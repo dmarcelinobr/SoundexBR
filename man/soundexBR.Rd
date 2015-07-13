@@ -3,7 +3,7 @@
 \alias{soundexBR}
 \title{ Phonetic-Coding For Portuguese
 }
-\description{The soundexBR function provides an algorithm for decoding names into phonetic codes, as pronounced in Portuguese. Soundex coding can be useful to identify \sQuote{close} matches which typically fail due to variant spellings of names. For instance, both \dQuote{Clair} and \dQuote{Claire} return the same string \dQuote{C460}, but the slightly different spellings of these names is enough to cause a deterministic linkage to fail when comparing the actual names. Soundex does not help when the variants do not sound alike, or start with different letters.
+\description{The soundexBR function is an algorithm for decoding names into phonetic codes, as pronounced in Portuguese. Soundex coding can be useful to identify \sQuote{close} matches which typically fail due to variant spellings of names. For instance, both \dQuote{Clair} and \dQuote{Claire} return the same string \dQuote{C460}, but the slightly different spellings of these names is enough to cause a deterministic linkage to fail when comparing the actual names. Soundex does not help when the variants do not sound alike, or start with different letters.
 }
 \usage{
 soundexBR(term, BR=TRUE, useBytes = FALSE)
@@ -15,8 +15,8 @@ soundexBR(term, BR=TRUE, useBytes = FALSE)
   \item{useBytes}{ if \code{useBytes=TRUE} performs byte-wise comparison. The default is set to \code{FALSE}, which takes longer, but it may prevent different results depending on character encoding.
 }
 }
-\details{ The soundexBR may help with identification of names even when they are spelled differently. However, the algorithm does not help when the variants do not sound alike, or start with different letters. For instance, while \dQuote{Carolina} and \dQuote{Karolina} both receive a similar code, respectively \dQuote{C645} and \dQuote{K645}, the first letter differ. 
-Further, this function is only meaningful for characters in the ranges a-z and A-Z. Although, I tried to minimize character encoding issues, there are several non-printable ascii characters and system-dependent characters that may cause the function to print a warning message. 
+\details{ The soundexBR may help with identification of names even when they are spelled differently. However, the algorithm does not help when the variants do not sound alike, or start with different letters. For instance, while \dQuote{Carolina} and \dQuote{Karolina} both receive a similar code, respectively \dQuote{C645} and \dQuote{K645}, the first letter differ.
+Further, this function is only meaningful for characters in the ranges a-z and A-Z. Although, I tried to minimize character encoding issues, there are several non-printable ascii characters and system-dependent characters that may cause the function to print a warning message.
 
 The numerical digits of the code are based on specific consonant sounds and can be computed by using the letters's \sQuote{power}. For instance, (1) retain the first letter of the name and drop other occurrences of \verb{A, E, I, O, U, Y, H, W}. (2) replace consonants with digits as follows (after the first letter):
 \preformatted{
@@ -42,21 +42,21 @@ Camargo Jr. and Coeli CM. (2000) Reclink: aplicativo para o relacionamento de ba
 
 Eastman, Dick \emph{Soundex Calculator}, \url{http://eogn.com/soundex/}.
 
-Marcelino, Daniel (2013) \emph{SciencesPo: A Tool Set for Analyzing Political Behaviour Data}, \url{(http://dx.doi.org/10.2139/ssrn.2320547}.
+Marcelino, Daniel (2013) \emph{SciencesPo: A Tool Set for Analyzing Political Behaviour Data}, \url{http://dx.doi.org/10.2139/ssrn.2320547}.
 
 Paula, Fátima de Lima (2014) \emph{Readmissão Hospitalar de Idosos após Internação por Fratura Proximal do Fêmur no Município do Rio de Janeiro}, Doctoral thesis, Fiocruz.
 }
 
 \author{Daniel Marcelino \email{dmarcelino@live.com}
 }
-\note{This function was adapted from the US census soundex version. 
+\note{This function was adapted from the US census soundex version.
 See in \url{http://archives.gov/research/census/soundex.html}
 }
 
 \examples{
 
 #### A silly example:
-names <- c('Ana Karolina Kuhnen', 'Ana Carolina Kuhnen', 'Ana Karolina','João Souza', 
+names <- c('Ana Karolina Kuhnen', 'Ana Carolina Kuhnen', 'Ana Karolina','João Souza',
 'João Souza', 'Dilma Vana Rousseff', 'Dilma Rousef','Aécio Neves', 'Aecio Neves')
 
 soundexBR(names)
@@ -85,12 +85,12 @@ blockfld=list(c(1,2,4),c(1,2)),
 phonetic<-c(1,2), phonfun = soundexBR, strcmp = FALSE,
 strcmpfun<-jarowinkler, exclude=FALSE,identity1 = NA,
 identity2=NA, n_match <- NA, n_non_match = NA)
-      
+
 print(pairs)
 
 editMatch(pairs)
 
-# To access information in the object:  
+# To access information in the object:
 weights <- epiWeights(pairs, e = 0.01, f = pairs$frequencies)
 hist(weights$Wdata, plot = FALSE) # Plot TRUE
 getPairs(pairs, max.weight = Inf, min.weight = -Inf)
