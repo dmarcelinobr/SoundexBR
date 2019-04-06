@@ -37,8 +37,9 @@ will return the same string “C460” for both names. A walkthrough in the
 1 - From the CRAN repository:
 
 ``` r
-  install.packages('SoundexBR',repos='http://cran.r-project.org')
-  require(SoundexBR)
+install.packages('SoundexBR', dep=TRUE)
+  
+library(SoundexBR)
 ```
 
 2 - To get the current development version from Github:
