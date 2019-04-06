@@ -1,32 +1,46 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-SoundexBR <img src="inst/doc/SoundexBR-logo.png" width="240px" align="right" />
-===============================================================================
 
-`[![CRAN Version](http://www.r-pkg.org/badges/version/SoundexBR)](http://cran.r-project.org/package=SoundexBR)` `[![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)` `[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)` `![](http://cranlogs.r-pkg.org/badges/grand-total/SoundexBR)`
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
 
-Phonetic-Coding For Portuguese
-------------------------------
+# SoundexBR <img src="inst/doc/SoundexBR-logo.png" width="240px" align="right" /> 
 
-The SoundexBR package provides an algorithm for decoding names into phonetic codes as pronounced in Portuguese. The goal is for homophone strings to be encoded with same alphanumeric representation, so that they can match despite *minor differences* in spelling.
+
+`[![CRAN Version](http://www.r-pkg.org/badges/version/SoundexBR)](http://cran.r-project.org/package=SoundexBR)`
+`[![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)`   `[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)` `![](http://cranlogs.r-pkg.org/badges/grand-total/SoundexBR)` 
+
+
+## Phonetic-Coding For Portuguese
+
+The SoundexBR package provides an algorithm for decoding names into phonetic codes as pronounced in Portuguese. The goal is for homophone strings to be encoded with same alphanumeric representation, so that they can match despite *minor differences* in spelling. 
 
 The Soundex algorithm encodes mainly consonants by default. However, a vowel will be encoded or counted if it's the first letter. The resultant code consists of a string four digits long, composed by one letter followed by three numerical digits: `[LETTER]` `[0-9]` `[0-9]` `[0-9]`. The letter is the first letter of the name while the digits encode the remaining consonants.
 
-As one can imagine now, the *SoundexBR* resultant string can be very useful at identifying "close" matches that would typically fail due to variant spelling of names or transposition errors. For instance, the difference in the names *Clair* and *Claire* is enough to cause deterministic linkage to fail when comparing them, but the *SoundexBR* will return the same string "C460" for both names.
+As one can imagine now, the _SoundexBR_ resultant string can be very useful at identifying "close" matches that would typically fail due to variant spelling of names or transposition errors. For instance, the difference in the names  _Clair_ and _Claire_ is enough to cause deterministic linkage to fail when comparing them, but the _SoundexBR_ will return the same string "C460" for both names. 
 
-Installation
-------------
+
+## Installation
 
 1 - From the CRAN repository:
 
-``` r
+```{r, eval=FALSE}
   install.packages('SoundexBR',repos='http://cran.r-project.org')
   require(SoundexBR)
 ```
 
 2 - To get the current development version from Github:
 
-``` r
+
+```{r, eval=FALSE}
 ## install devtools package if it's not already
 if (!requireNamespace("devtools", quietly = TRUE)) {
   install.packages("devtools")
@@ -37,12 +51,12 @@ install_github("danielmarcelino/SoundexBR")
 library(SoundexBR)
 ```
 
-Usage
------
+
+
+## Usage
 
 ### A silly example
-
-``` r
+```{r, eval=FALSE}
 names <-
   c(
   'Ana Karolina Kuhnen',
@@ -53,37 +67,36 @@ names <-
   'Dilma Vana Rousseff',
   'Dilma Rousef'
   )
-    
+	
 soundexBR(names)
 [1] "A526" "A526" "A526" "J220" "J220" "D451" "D456"
 ```
 
-### The SoundexBR *vs* the original Soundex values
 
-``` r
+### The SoundexBR *vs* the original Soundex values 
+```{r, eval=FALSE}
 names2 <- c("HILBERT", "Heilbronn", "Gauss", "Kant")
 ```
 
 ##### Original Soundex outcome
 
-``` r
+```{r, eval=FALSE}
  soundexBR(names2, BR=FALSE) 
 [1] "H416" "H416" "G200" "K530"
 ```
-
+ 
 ##### The SoundexBR outcome
-
-``` r
+   
+```{r, eval=FALSE}
 soundexBR(names2)
 [1] "I416" "E416" "G200" "C530"
 ```
 
-Example with RecordLinkage:
----------------------------
 
+## Example with RecordLinkage:
 ### Some data
 
-``` r
+```{r, eval=FALSE}
 data1 <- data.frame(list(
   first_name = c('Ricardo', 'Maria', 'Tereza', 'Pedro', 'José', 'Germano'),
   last_name = c('Cunha', 'Andrade', 'Silva', 'Soares', 'Silva', 'Lima'),
@@ -93,7 +106,8 @@ data1 <- data.frame(list(
   ))
 ```
 
-``` r
+
+```{r, eval=FALSE}
 data2 <-
   data.frame(list(
   first_name = c('Maria', 'Lúcia', 'Paulo', 'Marcos', 'Ricardo', 'Germânio'),
@@ -106,7 +120,7 @@ data2 <-
 
 ### Must call RecordLinkage package
 
-``` r
+```{r, eval=FALSE}
 
 pairs <- compare.linkage(
   data1,
@@ -122,9 +136,11 @@ pairs <- compare.linkage(
   n_match <- NA,
   n_non_match = NA
 )
+
 ```
 
-``` r
+
+```{r, eval=FALSE}
 
 print(pairs)
 $data1
@@ -162,15 +178,17 @@ attr(,"class")
 [1] "RecLinkData"
 ```
 
-### Editing correspondences
 
-``` r
+### Editing  correspondences 
+
+```{r, eval=FALSE}
 editMatch(pairs)
+
 ```
 
-### Accessing information within object:
+### Accessing information within object:  
 
-``` r
+```{r, eval=FALSE}
 weights <- epiWeights(pairs, e = 0.01, f = pairs$frequencies)
 
 hist(weights$Wdata, plot = FALSE) # Plot TRUE
@@ -207,27 +225,40 @@ getPairs(pairs, max.weight = Inf, min.weight = -Inf)
 8  1    Maria Andrada  67  1945 20121208   <NA>
 ```
 
-The Algorithm in a Nutshell
----------------------------
 
-Capitalize all letters in the word and drop all punctuation marks. Pad the word with rightmost blanks as needed during each procedure step. Retain the first letter of the word. However, if the first letter of the word is **H**, retain the second letter. If the first letter of the word is **Y**, change to **I**. If the combination of the first and the second letters is: **WA**, change to **VA**. If the combination of the first and the second letters is: **KA**, change to **CA**. If the combination of the first and the second letters is: **KO**, change to **CO**. If the combination of the first and the second letters is: **KU**, change to **CU**. If the combination of the first and the second letters is: **CI**, change to **SI**. If the combination of the first and the second letters is: **CE**, change to **SE**. If the combination of the first and the second letters is: **GE**, change to **JE**. If the combination of the first and the second letters is: **GI**, change to **JI**.
+
+## The Algorithm in a Nutshell
+
+Capitalize all letters in the word and drop all punctuation marks. Pad the word with rightmost blanks as needed during each procedure step.
+Retain the first letter of the word. However, if the first letter of the word is 
+**H**, retain the second letter. If the first letter of the word is 
+**Y**, change to **I**. If the combination of the first and the second letters is: 
+**WA**, change to **VA**. If the combination of the first and the second letters is: 
+**KA**, change to **CA**. If the combination of the first and the second letters is: 
+**KO**, change to **CO**. If the combination of the first and the second letters is: 
+**KU**, change to **CU**. If the combination of the first and the second letters is: 
+**CI**, change to **SI**. If the combination of the first and the second letters is: 
+**CE**, change to **SE**. If the combination of the first and the second letters is: 
+**GE**, change to **JE**. If the combination of the first and the second letters is: 
+**GI**, change to **JI**.
 
 Change all occurrence of the following letters to '0' (zero):
 
-`A, E, I, O, U, H, W, Y.`
+```A, E, I, O, U, H, W, Y.```
 
 Change letters from the following sets into the digit given:
 
-`1 = B, F, P, V`
+```1 = B, F, P, V```
 
-`2 = C, G, J, K, Q, S, X, Z`
+```2 = C, G, J, K, Q, S, X, Z```
 
-`3 = D, T`
+```3 = D, T```
 
-`4 = L`
+```4 = L```
 
-`5 = M, N`
+```5 = M, N```
 
-`6 = R`
+```6 = R ```
 
 Remove all pairs of digits which occur beside each other from the string that resulted after step (4). Remove all zeros from the string that results from step 5.0 (computed in step 3). Pad the resultant string from step (6) with trailing zeros and return only the first four positions, which will be of the form `[ALPHA]` `[0-9]` `[0-9]` `[0-9]`.
+
