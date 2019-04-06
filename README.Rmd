@@ -14,9 +14,11 @@ knitr::opts_chunk$set(
 
 # SoundexBR <img src="inst/doc/SoundexBR-logo.png" width="240px" align="right" /> 
 
-
-`[![CRAN Version](http://www.r-pkg.org/badges/version/SoundexBR)](http://cran.r-project.org/package=SoundexBR)`
-`[![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)`   `[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)` `![](http://cranlogs.r-pkg.org/badges/grand-total/SoundexBR)` 
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)
+![CRAN Version](https://www.r-pkg.org/badges/version/SoundexBR)
+![](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-blueviolet.svg?style=flat)
+![](https://cranlogs.r-pkg.org/badges/grand-total/SoundexBR)
 
 
 ## Phonetic-Coding For Portuguese
@@ -25,7 +27,8 @@ The SoundexBR package provides an algorithm for decoding names into phonetic cod
 
 The Soundex algorithm encodes mainly consonants by default. However, a vowel will be encoded or counted if it's the first letter. The resultant code consists of a string four digits long, composed by one letter followed by three numerical digits: `[LETTER]` `[0-9]` `[0-9]` `[0-9]`. The letter is the first letter of the name while the digits encode the remaining consonants.
 
-As one can imagine now, the _SoundexBR_ resultant string can be very useful at identifying "close" matches that would typically fail due to variant spelling of names or transposition errors. For instance, the difference in the names  _Clair_ and _Claire_ is enough to cause deterministic linkage to fail when comparing them, but the _SoundexBR_ will return the same string "C460" for both names. 
+As one can imagine now, the _SoundexBR_ resultant string can be very useful at identifying "close" matches that would typically fail due to variant spelling of names or transposition errors. For instance, the difference in the names  _Clair_ and _Claire_ is enough to cause deterministic linkage to fail when comparing them, but the _SoundexBR_ will return the same string "C460" for both names. A walkthrough in the [vignette](vignettes/SoundexBR.html) provides more information.
+
 
 
 ## Installation

@@ -1,21 +1,38 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-SoundexBR <img src="inst/doc/SoundexBR-logo.png" width="240px" align="right" />
-===============================================================================
 
-`[![CRAN Version](http://www.r-pkg.org/badges/version/SoundexBR)](http://cran.r-project.org/package=SoundexBR)` `[![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)` `[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html)` `![](http://cranlogs.r-pkg.org/badges/grand-total/SoundexBR)`
+# SoundexBR <img src="inst/doc/SoundexBR-logo.png" width="240px" align="right" />
 
-Phonetic-Coding For Portuguese
-------------------------------
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Build
+Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)
+![CRAN Version](https://www.r-pkg.org/badges/version/SoundexBR)
+![](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-blueviolet.svg?style=flat)
+![](https://cranlogs.r-pkg.org/badges/grand-total/SoundexBR)
 
-The SoundexBR package provides an algorithm for decoding names into phonetic codes as pronounced in Portuguese. The goal is for homophone strings to be encoded with same alphanumeric representation, so that they can match despite *minor differences* in spelling.
+## Phonetic-Coding For Portuguese
 
-The Soundex algorithm encodes mainly consonants by default. However, a vowel will be encoded or counted if it's the first letter. The resultant code consists of a string four digits long, composed by one letter followed by three numerical digits: `[LETTER]` `[0-9]` `[0-9]` `[0-9]`. The letter is the first letter of the name while the digits encode the remaining consonants.
+The SoundexBR package provides an algorithm for decoding names into
+phonetic codes as pronounced in Portuguese. The goal is for homophone
+strings to be encoded with same alphanumeric representation, so that
+they can match despite *minor differences* in spelling.
 
-As one can imagine now, the *SoundexBR* resultant string can be very useful at identifying "close" matches that would typically fail due to variant spelling of names or transposition errors. For instance, the difference in the names *Clair* and *Claire* is enough to cause deterministic linkage to fail when comparing them, but the *SoundexBR* will return the same string "C460" for both names.
+The Soundex algorithm encodes mainly consonants by default. However, a
+vowel will be encoded or counted if it’s the first letter. The resultant
+code consists of a string four digits long, composed by one letter
+followed by three numerical digits: `[LETTER]` `[0-9]` `[0-9]` `[0-9]`.
+The letter is the first letter of the name while the digits encode the
+remaining consonants.
 
-Installation
-------------
+As one can imagine now, the *SoundexBR* resultant string can be very
+useful at identifying “close” matches that would typically fail due to
+variant spelling of names or transposition errors. For instance, the
+difference in the names *Clair* and *Claire* is enough to cause
+deterministic linkage to fail when comparing them, but the *SoundexBR*
+will return the same string “C460” for both names. A walkthrough in the
+[vignette](vignettes/SoundexBR.html) provides more information.
+
+## Installation
 
 1 - From the CRAN repository:
 
@@ -37,8 +54,7 @@ install_github("danielmarcelino/SoundexBR")
 library(SoundexBR)
 ```
 
-Usage
------
+## Usage
 
 ### A silly example
 
@@ -78,8 +94,7 @@ soundexBR(names2)
 [1] "I416" "E416" "G200" "C530"
 ```
 
-Example with RecordLinkage:
----------------------------
+## Example with RecordLinkage:
 
 ### Some data
 
@@ -207,12 +222,25 @@ getPairs(pairs, max.weight = Inf, min.weight = -Inf)
 8  1    Maria Andrada  67  1945 20121208   <NA>
 ```
 
-The Algorithm in a Nutshell
----------------------------
+## The Algorithm in a Nutshell
 
-Capitalize all letters in the word and drop all punctuation marks. Pad the word with rightmost blanks as needed during each procedure step. Retain the first letter of the word. However, if the first letter of the word is **H**, retain the second letter. If the first letter of the word is **Y**, change to **I**. If the combination of the first and the second letters is: **WA**, change to **VA**. If the combination of the first and the second letters is: **KA**, change to **CA**. If the combination of the first and the second letters is: **KO**, change to **CO**. If the combination of the first and the second letters is: **KU**, change to **CU**. If the combination of the first and the second letters is: **CI**, change to **SI**. If the combination of the first and the second letters is: **CE**, change to **SE**. If the combination of the first and the second letters is: **GE**, change to **JE**. If the combination of the first and the second letters is: **GI**, change to **JI**.
+Capitalize all letters in the word and drop all punctuation marks. Pad
+the word with rightmost blanks as needed during each procedure step.
+Retain the first letter of the word. However, if the first letter of the
+word is **H**, retain the second letter. If the first letter of the word
+is **Y**, change to **I**. If the combination of the first and the
+second letters is: **WA**, change to **VA**. If the combination of the
+first and the second letters is: **KA**, change to **CA**. If the
+combination of the first and the second letters is: **KO**, change to
+**CO**. If the combination of the first and the second letters is:
+**KU**, change to **CU**. If the combination of the first and the second
+letters is: **CI**, change to **SI**. If the combination of the first
+and the second letters is: **CE**, change to **SE**. If the combination
+of the first and the second letters is: **GE**, change to **JE**. If the
+combination of the first and the second letters is: **GI**, change to
+**JI**.
 
-Change all occurrence of the following letters to '0' (zero):
+Change all occurrence of the following letters to ‘0’ (zero):
 
 `A, E, I, O, U, H, W, Y.`
 
@@ -230,4 +258,8 @@ Change letters from the following sets into the digit given:
 
 `6 = R`
 
-Remove all pairs of digits which occur beside each other from the string that resulted after step (4). Remove all zeros from the string that results from step 5.0 (computed in step 3). Pad the resultant string from step (6) with trailing zeros and return only the first four positions, which will be of the form `[ALPHA]` `[0-9]` `[0-9]` `[0-9]`.
+Remove all pairs of digits which occur beside each other from the string
+that resulted after step (4). Remove all zeros from the string that
+results from step 5.0 (computed in step 3). Pad the resultant string
+from step (6) with trailing zeros and return only the first four
+positions, which will be of the form `[ALPHA]` `[0-9]` `[0-9]` `[0-9]`.
