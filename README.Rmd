@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# SoundexBR <img src="inst/doc/SoundexBR-logo.png" width="240px" align="right" /> 
+# SoundexBR <img src="inst/figures/SoundexBR-logo.png" width="240px" align="right" /> 
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Build Status](https://travis-ci.org/danielmarcelino/SoundexBR.svg?branch=master)](https://travis-ci.org/danielmarcelino/SoundexBR)

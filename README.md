@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SoundexBR <img src="inst/doc/SoundexBR-logo.png" width="240px" align="right" />
+# SoundexBR <img src="inst/figures/SoundexBR-logo.png" width="240px" align="right" />
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Build
